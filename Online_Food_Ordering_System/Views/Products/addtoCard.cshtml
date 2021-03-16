@@ -1,0 +1,55 @@
+﻿@model Online_Food_Ordering_System.Models.Entity.Product
+
+@{
+    ViewBag.Title = "addtoCard";
+}
+
+<h2>addtoCard</h2>
+
+
+
+
+@using (Html.BeginForm())
+{
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <table class="table tab-content">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.prdName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.prdPrice)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.prdDescription)
+                </th>
+                <th>Quantity</th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.prdName)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.prdPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.prdDescription)
+                </td>
+                <td>
+                    <input type="number" id="qty" name="qty" value="1" min="1" max="100" class="form-control" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <input type="submit" value="Add to Cart" class="btn theme-btn btn-success pull-left" />
+                </td>
+            </tr>
+
+
+        </table>
+    </div>
+}
+
+@Html.ActionLink("Back to Menu","Menu","Home")

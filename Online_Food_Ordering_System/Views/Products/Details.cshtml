@@ -1,0 +1,58 @@
+﻿@model Online_Food_Ordering_System.Models.Entity.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.catClass.catName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catClass.catName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prdPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prdPrice)
+        </dd>
+
+        <dt>
+           @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.ImagePath)"  width="200" height="200"/>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prdDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prdDescription)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.prdID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewBag.Title = "AdminACC";
+}
+
+<br /><br /><br /><br />
+<h1>Admin Account</h1>
+<br />
+
+<!-- Admin Index -->
+<section class="popular">
+    <div class="container">
+
+        <div class="title text-xs-center m-b-30">
+            <h2>You Can Modify Your Website From Here!!!</h2>
+            <p class="lead">The easiest way to your favourite food</p>
+        </div>
+
+        <div class="row">
+            <!-- Each Menu food starts -->
+                <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                    <div class="food-item-wrap">
+
+                        <div class="figure-wrap bg-image">
+                            <img src="~/images/Menu.jpg" width="380" height="210" />
+                        </div>
+
+                        <div class="content">
+                            <h5><a href="#"> Menus </a></h5>
+                            <div class="price-btn-block">
+                             @using (Html.BeginForm("Index","Categories", FormMethod.Get))
+                             {
+                                 <input type="submit" value="Show Menu" class="btn theme-btn-dash pull-right" />
+                             }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- Each Menu food Ends -->
+            <!-- Each food Menu Items starts -->
+            <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                <div class="food-item-wrap">
+                    <div class="figure-wrap bg-image" >
+                        <img src="~/images/56555.jpg" width="380" height="210" />
+                    </div>
+
+                    <div class="content">
+                        <h5><a href="#"> Menu Items </a></h5>
+                        <div class="price-btn-block">
+                            @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+                            {
+                                <input type="submit" value="Show Menu Items" class="btn theme-btn-dash pull-right" />
+                            }                      
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Each food Menu Items -->
+            <!-- Each food Menu Items starts -->
+            <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                <div class="food-item-wrap">
+                    <div class="figure-wrap bg-image">
+                        <img src="~/images/F4.PNG" width="380" height="210" />
+                    </div>
+
+                    <div class="content">
+                        <h5><a href="#"> Food Offering </a></h5>
+                        <div class="price-btn-block">
+                            @using (Html.BeginForm("Index", "FoodOffers", FormMethod.Get))
+                            {
+                                <input type="submit" value="Make Offers" class="btn theme-btn-dash pull-right" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Each food Menu Items -->
+            <!-- Each Menu food starts -->
+            <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                <div class="food-item-wrap">
+
+                    <div class="figure-wrap bg-image">
+                        <img src="~/images/43.jpg" width="380" height="210" />
+                    </div>
+
+                    <div class="content">
+                        <h5><a href="#"> Users </a></h5>
+                        <div class="price-btn-block">
+                            @using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+                            {
+                                <input type="submit" value="Show Users" class="btn theme-btn-dash pull-right" />
+                            }  
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Each Menu food Ends -->
+            <!-- Each Menu food starts -->
+            <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                <div class="food-item-wrap">
+
+                    <div class="figure-wrap bg-image">
+                        <img src="~/images/1234.jpg" width="380" height="210" />
+                    </div>
+
+                    <div class="content">
+                        <h5><a href="#"> Orders </a></h5>
+                        <div class="price-btn-block">
+                            @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+                            {
+                                <input type="submit" value="Show Orders" class="btn theme-btn-dash pull-right" />
+                            }                      
+                          </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Each Menu food Ends -->
+            <!-- Each Menu food starts -->
+            <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                <div class="food-item-wrap">
+
+                    <div class="figure-wrap bg-image">
+                        <img src="~/images/Brach.jpg" width="380" height="210" />
+                    </div>
+
+                    <div class="content">
+                        <h5><a href="#"> Branches </a></h5>
+                        <div class="price-btn-block">
+                            @using (Html.BeginForm("Index", "Branches", FormMethod.Get))
+                            {
+                                <input type="submit" value="Show Orders" class="btn theme-btn-dash pull-right" />
+                            }                          </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Each Menu food Ends -->
+            <!-- Each Menu food starts -->
+            <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                <div class="food-item-wrap">
+
+                    <div class="figure-wrap bg-image">
+                        <img src="~/images/roles2.jpg" width="380" height="210" />
+                    </div>
+
+                    <div class="content">
+                        <h5><a href="#"> Roles </a></h5>
+                        <div class="price-btn-block">
+                            @using (Html.BeginForm("RoleList", "RoleMGR", FormMethod.Get))
+                            {
+                                <input type="submit" value="Show Roles" class="btn theme-btn-dash pull-right" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Each Menu food Ends -->
+            <!-- Each Menu food starts -->
+            @*<div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                <div class="food-item-wrap">
+
+                    <div class="figure-wrap bg-image">
+                        <img src="~/images/chart.jpg"  width="380" height="210"/>
+                    </div>
+
+                    <div class="content">
+                        <h5><a href="#"> Charts </a></h5>
+                        <div class="price-btn-block">
+                            @using (Html.BeginForm("Chart", "Products", FormMethod.Get))
+                            {
+                                <input type="submit" value="Show Charts" class="btn theme-btn-dash pull-right" />
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <!-- Each Menu food Ends -->
+        </div>
+    </div>
+</section>
+<!-- Admin Index -->

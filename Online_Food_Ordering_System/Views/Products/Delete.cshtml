@@ -1,0 +1,60 @@
+﻿@model Online_Food_Ordering_System.Models.Entity.Product
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <img src="@Url.Content(Model.ImagePath)" width="200" height="200" class="img-circle"/>
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.catClass.catName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catClass.catName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prdPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prdPrice)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prdDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prdDescription)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

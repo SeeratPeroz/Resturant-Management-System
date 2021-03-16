@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.Order>
+
+@{
+    ViewBag.Title = "Employee Index";
+}
+<br /><br />
+<br /><br /><br /><br />
+
+
+<h2>Employee Accout</h2>
+<br />
+<br />
+
+<table class="table tab-content">
+    <tr>
+        <th>
+            Order ID
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.custName)
+        </th>
+        <th>
+            Order Date
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ordLocation)
+        </th>
+        <th> Actions </th>
+    </tr>
+
+@foreach (var item in Model.OrderByDescending(m=>m.ordDate)) {
+    <tr>
+        <td>
+            @Html.DisplayFor(m => item.ordID)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.custName)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.ordDate)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.ordLocation)
+        </td>
+        <td>
+            @*@Html.ActionLink("Dispatch", "Dispatch", new { id = item.ordID}) |*@
+            @Html.ActionLink("Details", "Details", new { id = item.ordID})
+        </td>
+    </tr>
+}
+
+</table>
+
+<hr />
+<br /><br /><br />

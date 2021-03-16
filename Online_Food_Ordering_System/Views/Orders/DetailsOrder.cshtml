@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.OrderDetails>
+
+@{
+    ViewBag.Title = "Order Details";
+}
+<br /><br /><br />
+<h1>Order Details</h1>
+<br />
+
+@Html.ActionLink("Return to Pervious Page", "Index")
+
+<br /><br />
+
+
+<table class="table table-striped">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.prdClass.prdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>Total Price</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.prdClass.prdName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qty)
+            </td>
+            <td>@Html.Raw(item.Price * item.Qty)</td>
+        </tr>
+    }
+
+</table>
+
+<br /><br /><br />
+<hr />

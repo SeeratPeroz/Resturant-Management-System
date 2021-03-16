@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.empName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empPassword)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.empRole)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.empName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empPassword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.empRole)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.empID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.empID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.empID })
+        </td>
+    </tr>
+}
+
+</table>

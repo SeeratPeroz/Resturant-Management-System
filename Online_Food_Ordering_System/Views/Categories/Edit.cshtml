@@ -1,0 +1,66 @@
+﻿@model Online_Food_Ordering_System.Models.Entity.Category
+
+@{
+    ViewBag.Title = "Edit Menu";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<br /><br /><br />
+<h1>Create New Menu</h1>
+<br /><br />
+
+
+@using (Html.BeginForm("Edit", "Categories", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <table class="table table-striped">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.catID)
+        <tr>
+            <td> @Html.LabelFor(m => m.catName)</td>
+            <td>@Html.TextBoxFor(m => m.catName, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.catName, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.ImagePath)</td>
+            <td><input type="file" name="ImageFile" id="ImageFile" /></td>
+            <td><img src="@Url.Content(Session["imgPath"].ToString())" width="80" height="80"/></td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.catMinPrice)</td>
+            <td>@Html.TextBoxFor(m => m.catMinPrice, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.catMinPrice, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.catDesc)</td>
+            <td>@Html.TextBoxFor(m => m.catDesc, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.catDesc, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.catDelivery)</td>
+            <td>@Html.TextBoxFor(m => m.catDelivery, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.catDelivery, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td> @Html.LabelFor(m => m.catViews)</td>
+            <td>@Html.TextBoxFor(m => m.catViews, new { @class = "form-control" })</td>
+            <td>@Html.ValidationMessageFor(m => m.catViews, null, new { @class = "text-danger" })</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="2"><input type="submit" value="Save" class="btn btn-primary pull-left" /></td>
+        </tr>
+    </table>
+
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "", new { @class = "btn theme-btn btn-block pull-left" })
+</div>
+<br />
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,52 @@
+﻿@model Online_Food_Ordering_System.Models.Entity.OrderDetails
+
+@{
+    ViewBag.Title = "SelectFood";
+}
+
+<h2>Add to Card</h2>
+
+
+
+<!-- Menu Index -->
+<section class="popular">
+    <div class="container">
+
+        <div class="title text-xs-center m-b-30">
+            <h2>Here You Can Modify Your Menus Items !!!</h2>
+            <p class="lead">The easiest way to your favourite food</p>
+        </div>
+        <p>
+            <br /><br />
+            @Html.ActionLink("Return to pervious page", "AdminACC", "EmployeePage", new { @class = "btn theme-btn btn-block pull-left" })
+            <br />
+        </p>
+        <br />
+        <div class="row">
+            <!-- Each Menu food starts -->
+ 
+                <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                    <div class="food-item-wrap">
+
+                        <div class="figure-wrap bg-image" data-image-src="http://placehold.it/380x210">
+                        </div>
+                        <div class="content">
+                            <h5><a href="#"> @Model.prdClass.prdName </a></h5>
+                            <div class="product-name"> @Model.prdClass.prdDescription </div>
+                            <div class="price-btn-block">
+                                <span class="price">Price Afs @Model.prdClass.prdPrice  </span>
+                                @using (Html.BeginForm(":", "", FormMethod.Get))
+                                {
+                                    @Html.TextBoxFor(x =>x.Qty )
+                                    @Html.ActionLink("Add to Cart", "Edit", new { id = Model.prdID }, new { @class = "btn theme-btn btn-block pull-left" })
+                                }
+
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- Each Menu food Ends -->
+        </div>
+    </div>
+</section>
+<!-- Menu Index -->

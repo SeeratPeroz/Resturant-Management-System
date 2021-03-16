@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>
+<title>Create Employee</title>
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("RegisterEmployee", "Account", FormMethod.Get))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" class="btn theme-btn btn-block pull-left" value="Create New User" />
+}
+
+
+<br /><br /> 
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>@Html.ActionLink("Delete", "DeleteUser", new { id = item.Id }, new { onClick = "return confirm('Are sure?');" })</td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Back to Admin Page", "AdminACC", "EmployeePage")
+</p>
+<br /><br /><br />

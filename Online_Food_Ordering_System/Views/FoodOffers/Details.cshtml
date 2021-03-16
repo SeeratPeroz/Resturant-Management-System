@@ -1,0 +1,42 @@
+﻿@model Online_Food_Ordering_System.Models.Entity.FoodOffer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FoodOffer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.prdClass.prdName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prdClass.prdName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fofPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fofPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fofDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fofDesc)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.fofID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,293 @@
+﻿@using Online_Food_Ordering_System.Models.Entity;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<link href="~/Content/animate.min.css" rel="stylesheet" />
+<link href="~/Content/animate.css" rel="stylesheet" />
+<link href="~/Content/animsition.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/style.min.css" rel="stylesheet" />
+
+
+
+
+<body class="home" ><br>
+    <div>
+        @if (TempData["msg"] != null)
+        {
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" class="close" data-dissmiss="alert">&times;</button>
+                <strong>Success!</strong> @TempData["msg"]
+
+
+            </div>
+        }
+        <div style="background-image: url('../../images/1234.jpg'); ">
+            <section class="hero bg-image">
+                @if (TempData["total"] == null)
+            {
+            }
+            else
+            {
+                    <p class="navbar-text">Bill:  @TempData["total"] Afs</p>
+                }
+                <div class="hero-inner">
+
+                    <div class="container text-center hero-text font-white">
+                        <h1>Order Delivery & Take-Out </h1>
+                        <h5 class="font-white space-xs">Find you're fervorite food, specials, and coupons for free</h5>
+                        <div class="banner-form">
+
+                            <div class="form-inline">
+                                @using (Html.BeginForm("SearchFood", "Products", FormMethod.Get))
+                                {
+                                    @Html.TextBox("search", "", new { @class = "form-control form-control-lg", @placeholder = "I would like to eat...." })
+                                    <input type="submit" class="btn theme-btn btn-lg" />
+
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--end:Hero inner -->
+            </section>
+        </div>
+        <!-- banner part ends -->
+        <!-- location match part starts -->
+        <div class="location-match text-xs-center">
+            <div class="container">
+                <span>This most popular food ordering system in : <span class="primary-color">Kabul - Afghanistan </span> </span>
+            </div>
+        </div>
+        <!-- location match part ends -->
+        <!-- Popular block starts -->
+        <section class="popular">
+            <div class="container">
+
+                <div class="title text-xs-center m-b-30">
+                    <h2>Popular Foods in Today's Menu</h2>
+                    <p class="lead">The easiest way to your favourite food</p>
+                </div>
+
+                <div class="row">
+                    @foreach (var itm in ViewData["offerModel"] as List<FoodOffer>)
+                    {
+
+                    <!-- Each popular food item starts FOOD OFERING -->
+                    <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                        <div class="food-item-wrap">
+
+                            <div class="figure-wrap bg-image" data-image-src="http://placehold.it/380x210">
+                                <img src="@Url.Content(itm.prdClass.ImagePath)"  width="380" height="210"/>
+                            </div>
+                            <div class="rating pu">
+                                <span>
+                                    @{
+                                        if (itm.fofPrice < 50)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                        }
+                                        else if (itm.fofPrice <= 300)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+                                        }
+                                        else if (itm.fofPrice <= 500)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+
+                                        }
+                                        else if (itm.fofPrice <= 1000)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star-o"></i>
+                                                <i class="fa fa-star-o"></i>
+
+                                        }
+                                        else
+                                        {
+                                            <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+
+                                        }
+                                    }
+                                </span> (@if (itm.fofPrice == 0)
+                                {
+                                    @itm.prdClass.prdPrice
+                                }
+                                else
+                                {
+                                    @itm.fofPrice
+                                })
+                            </div>
+
+                            <div class="content">
+                                <h5><a href="#"> @itm.prdClass.prdName </a></h5>
+                                <div class="product-name">
+                                    @if (itm.fofDesc == null)
+                                    {
+                                        @itm.prdClass.prdDescription
+                                    }
+                                    else
+                                    {
+                                        @itm.fofDesc
+                                    }
+                                </div>
+                                <div class="price-btn-block">
+                                    <span class="price">Afs @itm.fofPrice</span>
+                                    @Html.ActionLink("Order Now", "addtoCard", "Products", new { id = itm.prdID }, new { @class = "btn theme-btn-dash pull-right" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Each popular food item starts -->
+                    }
+                </div>
+            </div>
+        </section>
+        <!-- Popular block ends -->
+        <!-- How it works block starts -->
+
+        <img src="~/images/stem3.PNG" style="position: relative; width: auto; height: auto;"/>
+        <!-- How it works block ends -->
+        <!-- Featured restaurants starts -->
+        <section class="featured-restaurants">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="title-block pull-left">
+                            <h2 id="menu"><b>Menu List</b></h2>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+
+                    </div>
+                </div>
+                <!-- Category listing starts -->
+                <div class="row">
+                    <div class="restaurant-listing">
+                    @foreach (var itm in ViewData["catModel"] as List<Category>)
+                    {
+                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant grill fish thaifood pizza">
+
+                            <div class="restaurant-wrap">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-3 col-md-12 col-lg-3 text-xs-center">
+                                        <a class="restaurant-logo" href="Home/MenuItems/@itm.catID"> <img src="@Url.Content(itm.ImagePath)" width="380" height="100" class="img-thumbnail"/ > </a>
+                                    </div>
+                                    <!--end:col -->
+                                    <div class="col-xs-12 col-sm-9 col-md-12 col-lg-9">
+                                        <h5>@Html.ActionLink(@itm.catName, "/MenuItems", new { id = itm.catID } ) 
+                                         </h5> <span> @itm.catDesc </span>
+                                        <div class="bottom-part">
+                                            <div class="cost"><i class="fa fa-check"></i> Min Afs @itm.catMinPrice</div>
+                                            <div class="mins"><i class="fa fa-motorcycle"></i> @itm.catDelivery min</div>
+                                            <div class="ratings">
+                                                <span>
+                                                    @{
+                                                        if (itm.catViews < 50)
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        }
+                                                        else if (itm.catViews <= 100)
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>     
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                        }
+                                                        else if (itm.catViews <= 1000)
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+
+                                                        }
+                                                    }
+                                                </span> (@itm.catViews)
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end:col -->
+                                </div>
+                                <!-- end:row -->
+                            </div>
+                            <!--end:Category wrap -->
+                        </div>
+                    }
+                     <br /> 
+                        <!--end: col -->
+                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant grill thaifood pasta pizza">
+                            <!--end:Restaurant wrap -->
+                        </div>
+                        <!--end: col -->
+                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant thaifood fish pasta">
+                            <!--end:Restaurant wrap -->
+                        </div>
+                        <!--end: col -->
+                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant grill fish thaifood pasta pizza">
+                            <!--end:Restaurant wrap -->
+                        </div>
+                        <!--end: col -->
+                        <div class="col-xs-12 col-sm-12 col-md-6 single-restaurant grill pasta pizza">
+                            <!--end:Restaurant wrap -->
+                        </div>
+                        <!--end: col -->
+                    </div>
+                </div>
+                <!-- restaurants listing ends -->
+                <!-- add restaurant starts -->                <!-- add restaurant ends -->
+            </div>
+        </section>
+        <!-- Featured restaurants ends -->
+        <section class="app-section">
+            <div class="app-wrap">
+                <div class="container">
+                    <div class="row text-img-block text-xs-left"> </div>
+                </div>
+            </div>
+        </section>
+       
+    </div>
+    <!--/end:Site wrapper -->
+
+</body>
+

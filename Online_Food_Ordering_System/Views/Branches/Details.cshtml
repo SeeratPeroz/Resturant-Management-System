@@ -1,0 +1,34 @@
+﻿@model Online_Food_Ordering_System.Models.Entity.Branch
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Branch</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.brnName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brnName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.brnAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brnAddress)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

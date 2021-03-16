@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.Category>
+
+@{
+    ViewBag.Title = " Search Menu";
+}
+<br /><br /><br /><br /><br>
+<h1 align="center"> Menus </h1>
+<br />
+@using (Html.BeginForm("SearchCat", "Categories", FormMethod.Get))
+{
+    @Html.TextBox("search", "", new { @class = "form-control form-control-lg pull-right", @placeholder = "Search you Menu...." })
+    <input type="submit" class="btn theme-btn btn-secondary pull-right" />
+
+}
+
+<!-- Menu Index -->
+<section class="popular">
+    <div class="container">
+
+        <div class="title text-xs-center m-b-30">
+            <h2>You Can Modify Your Menus Here!!!</h2>
+            <p class="lead">The easiest way to your favourite food</p>
+        </div>
+        <p>
+            @Html.ActionLink("Create New", "Create", "", new { @class = "btn theme-btn btn-block pull-left" })
+            <br />
+        </p>
+        <br />
+        <div class="row">
+            <!-- Each Menu food starts -->
+            @foreach (var fd in Model)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                    <div class="food-item-wrap">
+
+                        <div class="figure-wrap bg-image" data-image-src="http://placehold.it/380x210">
+                        </div>
+
+                        <div class="content">
+                            <h5><a href="#"> @fd.catName </a></h5>
+                            <div class="product-name"> @fd.catDesc </div>
+                            <div class="price-btn-block">
+                                <span class="price">Min Price In Menu Afs @fd.catMinPrice  </span>
+                                @using (Html.BeginForm(":", "", FormMethod.Get))
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = fd.catID }, new { @class = "btn theme-btn btn-block pull-left" })
+                                    @Html.ActionLink("Details", "Details", new { id = fd.catID }, new { @class = "btn theme-btn btn-block pull-left" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = fd.catID }, new { @class = "btn theme-btn btn-block pull-left" })                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- Each Menu food Ends -->
+        </div>
+    </div>
+</section>
+<!-- Menu Index -->
+<hr />
+@using (Html.BeginForm("AdminACC", "EmployeePage", FormMethod.Get))
+            {
+    <input type="submit" value="Return to pervious page" class="btn btn-primary" />
+}
+
+<br /><br />

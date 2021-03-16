@@ -1,0 +1,65 @@
+﻿@model Online_Food_Ordering_System.Models.Entity.Category
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Category</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.catName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catMinPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catMinPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catViews)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catViews)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.catDelivery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.catDelivery)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(Model.ImagePath)" width="80" height="80" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.catID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

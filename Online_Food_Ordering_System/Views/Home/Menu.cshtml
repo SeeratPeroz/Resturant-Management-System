@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.Category>
+
+@{
+    ViewBag.Title = "Menu";
+}
+
+<h2>Menu</h2>
+
+<section class="popular">
+    <div class="container">
+
+        <div class="title text-xs-center m-b-30">
+            <h1>Today's Menu</h1>
+            <p class="lead">The easiest way to your favourite food</p>
+        </div>
+
+        <a href="/Products/checkout" > 
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="green" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+            </svg>Check Out
+        </a>
+        <br /><hr />
+            <div class="row">
+@foreach (var xm in Model)
+{
+                <!-- Each popular food item starts -->
+                <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                    <div class="food-item-wrap">
+
+                        <div class="figure-wrap bg-image">
+                            <img src="@Url.Content(xm.ImagePath)" width="380" height="210" class="img-rounded"/ >
+                        </div>
+
+                        <div class="content">
+                            <h5><a href="#"> @xm.catName</a></h5>
+                            <div class="rating">
+                                <span>
+                                    @{
+                                        if (xm.catViews < 50)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+                                        }
+                                        else if (xm.catViews <= 100)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        }
+                                        else if (xm.catViews <= 1000)
+                                        {
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                                            <i class="fa fa-star-o"></i>
+
+                                        }
+                                        else
+                                        {
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+
+                                        }
+                                    }
+                                </span> (@xm.catViews)
+                            </div>
+
+                            <div class="product-name"> @xm.catDesc</div>
+
+                            <div class="price-btn-block">
+                                <span class="price">Min Price  @xm.catMinPrice Afs</span>
+
+                                <a href="MenuItems/@xm.catID" class="btn theme-btn pull-right">Show Menu Items</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Each popular food item starts -->
+
+                }
+
+            </div>
+                                       
+
+    </div>
+</section>
+3:40 PM 1/7/2021

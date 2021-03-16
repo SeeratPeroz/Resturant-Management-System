@@ -1,0 +1,20 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "CreateRole";
+}
+
+<h2>CreateRole</h2>
+
+@using (Html.BeginForm("CreateRole", "RoleMGR"))
+{
+    <div class="form-group">
+        @Html.LabelFor(a => a.Name)
+        @Html.TextBoxFor(a => a.Name)
+        @Html.ValidationMessageFor(a => a.Name)
+
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
+
+@Html.ActionLink("Back to list", "RoleList", "RoleMGR")

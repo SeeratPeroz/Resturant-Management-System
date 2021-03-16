@@ -1,0 +1,142 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.Order>
+
+@{
+    ViewBag.Title = "Orders Index";
+}
+<br /><br />
+<h1 align="center">Orders</h1>
+
+<div class="title text-xs-center m-b-30">
+    <h2>You Can Modify Your Orders From Here!!!</h2>
+    <p class="lead">The easiest way to your favourite food</p>
+</div>
+
+<p>
+    @Html.ActionLink("Back Admin Page", "AdminACC", "EmployeePage")
+</p><br /><br /><br />
+
+<h1 align="center">Pending Orders</h1>
+<table class="table table-condensed">
+    <tr>
+        <th>
+           Order ID
+        </th>
+        <th>
+            @Html.DisplayName("Customer Email")
+        </th>
+        <th>
+            Order Date
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ordLocation)
+        </th>
+        <th>Total Price</th>
+        <th>
+            Paid
+        </th>
+        <th>Order Details</th>
+        <th colspan="2">Actions</th>
+    </tr>
+@foreach (var item in Model.Where(x=>x.paid.Equals(false))) {
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ordID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.custName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ordDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ordLocation)
+        </td>
+        <td>
+            @Html.DisplayFor(m => item.bill)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paid)
+        </td>
+
+        <td>
+            @Html.ActionLink("Show Me", "DetailsOrder", new { id = item.ordID })
+
+        </td>
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.ordID }) |*@
+            @*@Html.ActionLink("Details", "Details", new { id=item.ordID }) |*@
+            @Html.ActionLink("Delete", "Delete", new { id = item.ordID }, new { onClick = "return confirm('Are sure to delete this order?');" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<hr /><hr />
+<h1 align="center">Dlivered Orders</h1>
+<table class="table table-condensed">
+    <tr>
+        <th>
+            Order ID
+        </th>
+        <th>
+            @Html.DisplayName("Customer Email")
+        </th>
+        <th>
+            Order Date
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ordLocation)
+        </th>
+        <td>
+            @Html.DisplayNameFor(m => m.bill)
+        </td>
+        <th>
+            Paid
+        </th>
+        <th>
+            Dispatched By
+        </th>
+        <th>Order Details</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    @foreach (var item in Model.Where(x => x.paid.Equals(true)))
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ordID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.custName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ordDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ordLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.bill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.empName)
+
+            </td>
+            <td>
+                @Html.ActionLink("Show Me", "DetailsOrder", new { id = item.ordID })
+
+            </td>
+            <td>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.ordID }) |*@
+                @*@Html.ActionLink("Details", "Details", new { id = item.ordID }) |*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.ordID }, new { onClick = "return confirm('Are sure to delete this order?');" })
+            </td>
+        </tr>
+    }
+
+</table>

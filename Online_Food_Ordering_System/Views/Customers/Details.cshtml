@@ -1,0 +1,58 @@
+﻿@model Online_Food_Ordering_System.Models.Entity.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.custName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.custPassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.custPassword)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.custID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

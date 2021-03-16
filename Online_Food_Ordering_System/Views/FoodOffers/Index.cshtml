@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.FoodOffer>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br /><br /><br />
+<h1 align="center" class="panel-heading">Food Offering</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "", new { @class = "btn theme-btn btn-block pull-left" })
+</p>
+<p>@Html.ActionLink("Return to Admin Page", "AdminACC", "EmployeePage")</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.prdClass.prdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fofPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fofDesc)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.prdClass.prdName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fofPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fofDesc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.fofID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.fofID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.fofID })
+        </td>
+    </tr>
+}
+
+</table>

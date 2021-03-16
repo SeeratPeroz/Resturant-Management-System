@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "My Cart";
+}
+<br /><br />
+<h2 style="font-weight:bolder;"> My Cart 
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="green" class="bi bi-cart" viewBox="0 0 16 16">
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+    </svg>
+    </h2>
+    
+
+
+@if (TempData["cart"] != null)
+{
+    <table class="table table-responsive">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Bill</th>
+                <th>Action</th>
+            </tr>
+            @foreach (var itm in TempData["cart"] as List<Online_Food_Ordering_System.Models.cart>)
+            {
+                <tr>
+                    <td>@itm.prdID</td>
+                    <td>@itm.prdName</td>
+                    <td>@itm.qty</td>
+                    <td>@itm.price</td>
+                    <td>@itm.bill</td>
+
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("remove", new { id = @itm.prdID })">&#10008</a>
+                    </td>
+
+                </tr>
+            }
+        <tfoot>
+            <tr>
+                <td colspan="4"> </td>
+                <td>@TempData["total"]</td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+}
+else
+{
+    <br />
+    <h3> Cart is empty ....</h3>
+}
+<br /><hr /><hr />
+
+@if (TempData["cart"] != null)
+{
+    using (Html.BeginForm())
+    {
+        <table class="table table-hover">
+                <tr><th>@Html.Label("Location")</th>
+                <th><input type="text" id="loc" name="loc" class="form-horizontal" required ="required"/></th>
+            </tr>
+
+        </table>
+        <hr /><hr>
+        <input type="submit" value="Process Check out" class="btn btn-primary" />
+
+    }
+}

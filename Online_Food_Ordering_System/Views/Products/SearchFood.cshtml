@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.Product>
+@{
+    ViewBag.Title = "SearchFood";
+}
+
+<h2>Your Food Result</h2>
+
+<!-- Popular block starts -->
+<section class="popular">
+
+    <div class="container">
+
+        <div class="title text-xs-center m-b-30">
+            <h2>Your Food Result</h2>
+            <p class="lead">The easiest way to your favourite food</p>
+        </div>
+
+        <div class="row">
+            <!-- Each popular food item starts -->
+            @foreach (var fd in Model)
+            {
+            <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                <div class="food-item-wrap">
+
+                    <div class="figure-wrap bg-image" data-image-src="http://placehold.it/380x210">
+                        <img src="@Url.Content(fd.ImagePath)" width="380" height="210" />
+                    </div>
+
+                    <div class="content">
+                        <h5><a href="#"> @fd.prdName </a></h5>
+                        <div class="product-name"> @fd.prdDescription </div>
+                        <div class="price-btn-block">
+                            <span class="price">Afs @fd.prdPrice </span>
+                            @Html.ActionLink("Order Now", "addtoCard", "Products", new { id = fd.prdID }, new { @class = "btn theme-btn-dash pull-right" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+            <!-- Each popular food item Ends -->
+        </div>
+    </div>
+</section>
+<div>
+    @Html.ActionLink("Back to List", "Index", "Home")
+</div><br />
+<!-- Popular block ends -->

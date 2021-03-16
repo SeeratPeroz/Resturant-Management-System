@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - About us</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/animate.css" rel="stylesheet" />
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    <link href="~/Content/animsition.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/style.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("MyCafe", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Menu", "Menu", "Home")</li>
+                    <li>@Html.ActionLink("My Cart", "checkout", "Products")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Admin Page", "AdminACC", "EmployeePage")</li>
+                        <li>@Html.ActionLink("New Orders", "EmployeeIndex", "EmployeePage")</li>
+
+
+                    }
+                    else if (User.IsInRole("Employee"))
+                    {
+                        <li>@Html.ActionLink("Employee Page", "EmployeeIndex", "EmployeePage")</li>
+
+                    }
+                    <li>&nbsp;</li>
+
+                    <!----li><a href="#menu">Menu</a></li-->
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid body-content">
+        @RenderBody()
+        <hr />
+        <!-- Start of Footer-->
+        <footer class="footer">
+
+            <div class="container">
+                <!-- top footer statrs -->
+                <div class="row top-footer">
+                    <div class="col-xs-12 col-sm-3 footer-logo-block color-gray">
+                        <a href="#"> <img src="~/images/food-picky-logo.png" width="200"> </a> <span>Order Delivery &amp; Take-Out </span>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 about color-gray">
+                        <h5>About Us</h5>
+                        <ul>
+                            <li>@Html.ActionLink("Our Team", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "About", "Home")</li>
+                            <li>@Html.ActionLink("About us", "OurTeam") </li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-2 how-it-works-links color-gray">
+                        <h5>How it Works</h5>
+                        <ul>
+                            <li>@Html.ActionLink("Open Website", "Index", "Home") </li>
+                            <li>@Html.ActionLink("Choose meal", "Menu", "Home") </li>
+                            <li>@Html.ActionLink("Wait for delivery", "Index", "Home") </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- top footer ends -->
+                <!-- bottom footer statrs -->
+                <div class="bottom-footer">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 address color-gray">
+                            <h5>Address</h5>
+                            <p>Afshar-Silo, Kabul, Afghanitan <br> Sahre-now, Kabul, Afghanistan</p>
+                            <h5>Phone: <a href="tel:+93781919169">+93 781919169</a></h5>
+                            <h5>Email:<a href="mailto:siratperoz82@gmail.com">sirat.peroz@gmail.com</a></h5>
+                        </div>
+                        <div class="col-xs-12 col-sm-5 additional-info color-gray">
+                            <h5>Addition informations</h5>
+                            <p>Join the thousands of other restaurants who benefit from having their menus on TakeOff</p>
+
+                        </div>
+                    </div>
+                    <p style="text-align:center;">&copy; @DateTime.Now.Year - The Legends </p>
+
+                </div>
+                <!-- bottom footer ends -->
+            </div>
+        </footer>
+        <!-- end:Footer -->
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>

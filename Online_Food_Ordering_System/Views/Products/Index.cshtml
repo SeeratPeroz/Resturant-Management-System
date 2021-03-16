@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Online_Food_Ordering_System.Models.Entity.Product>
+
+@{
+    ViewBag.Title = "Menu Items ";
+}
+
+
+<br /><br /><br />
+<h1 align="center"> Menus Items </h1>
+<br />
+@using (Html.BeginForm("SearchCat", "Products", FormMethod.Get))
+{   
+    <input type="submit" class="btn theme-btn btn-secondary pull-right" />
+    @Html.TextBox("search", "", new { @class = "form-control form-control-lg pull-right", @placeholder = "Search you Menu Items...." })
+}
+
+<!-- Menu Index -->
+<section class="popular">
+    <div class="container">
+
+        <div class="title text-xs-center m-b-30">
+            <h2>Here You Can Modify Your Menus Items !!!</h2>
+            <p class="lead">The easiest way to your favourite food</p>
+        </div>
+        <p>
+            @Html.ActionLink("Create New", "Create", "", new { @class = "btn theme-btn btn-block pull-left" })
+            <br /><br />
+            @Html.ActionLink("Return to pervious page", "AdminACC", "EmployeePage")
+           
+        </p>
+        <br />
+        <div class="row">
+            <!-- Each Menu food starts -->
+            @foreach (var fd in Model.OrderBy(x=>x.prdPrice))
+            {
+                <div class="col-xs-12 col-sm-6 col-md-4 food-item">
+                    <div class="food-item-wrap">
+
+                        <div class="figure-wrap bg-image" data-image-src="http://placehold.it/380x210">
+
+                               @if (fd.ImagePath == null)
+                               {
+                                  <p> NOT Avaialable</p>
+                               }
+                               else
+                               {
+                                <img src="@Url.Content(fd.ImagePath)" width="380" height="210" class="img-rounded"/ >
+
+                               }
+                        </div>
+
+                        <div class="content">
+                            <h5><a href="#"> @fd.prdName </a></h5>
+                            <div class="product-name"> @fd.prdDescription </div>
+                            <div class="price-btn-block">
+                                <span class="price">Price Afs @fd.prdPrice  </span>
+                                @using (Html.BeginForm(":", "", FormMethod.Get))
+                                {
+                                    @Html.ActionLink("Edit", "Edit", new { id = fd.prdID }, new { @class = "btn theme-btn btn-block pull-left" })
+                                    @Html.ActionLink("Details", "Details", new { id = fd.prdID }, new { @class = "btn theme-btn btn-block pull-left" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = fd.prdID }, new { @class = "btn theme-btn btn-block pull-left" })<br />
+
+
+                                }
+
+                             </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- Each Menu food Ends -->
+        </div>
+    </div>
+</section>
+<!-- Menu Index -->
+<hr />
+<br /><br />
+
